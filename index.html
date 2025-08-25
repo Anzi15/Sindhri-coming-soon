@@ -28,6 +28,26 @@
             background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
         }
 
+        /* Added top logo styling */
+        .top-logo {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.5s forwards;
+            z-index: 20;
+        }
+
+        .top-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(1.1);
+        }
+
         /* Removed background-image and overlay classes */
 
         .content {
@@ -43,22 +63,7 @@
             text-align: center;
         }
 
-        .logo {
-            /* Using the provided logo image instead of text with border */
-            width: 180px;
-            height: 180px;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUp 1s ease-out 1.5s forwards;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: brightness(1.1);
-        }
+        /* Removed logo styling as it's now at the top */
 
         .main-heading {
             font-size: clamp(3rem, 10vw, 5rem);
@@ -82,7 +87,7 @@
             max-width: 600px;
         }
 
-        /* Added slogan styling */
+        /* Updated slogan styling to include since year */
         .slogan {
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             font-weight: 300;
@@ -93,21 +98,20 @@
             animation: slideUp 1s ease-out 2.5s forwards;
             font-style: italic;
             letter-spacing: 0.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
         }
 
-        /* Added since year styling */
-        .since-year {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 0.9rem;
-            font-weight: 300;
+        .since-text {
+            font-size: 0.85rem;
             opacity: 0.7;
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: slideUp 1s ease-out 1s forwards;
+            font-weight: 400;
             letter-spacing: 1px;
         }
+
+        /* Removed since-year styling as it's now part of slogan */
 
         .contact-button {
             background: rgba(255, 255, 255, 0.1);
@@ -270,6 +274,12 @@
             .social-links {
                 justify-content: flex-end;
             }
+
+            /* Updated top logo size for desktop */
+            .top-logo {
+                width: 140px;
+                height: 140px;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -277,15 +287,14 @@
                 padding: 8rem 4rem;
             }
 
-            .logo {
-                /* Made desktop logo slightly bigger */
-                width: 220px;
-                height: 220px;
-                margin-bottom: 4rem;
-            }
-
             .info-section {
                 padding: 4rem;
+            }
+
+            /* Updated top logo size for large desktop */
+            .top-logo {
+                width: 160px;
+                height: 160px;
             }
         }
 
@@ -294,12 +303,6 @@
             .content {
                 padding: 3rem 1.5rem;
                 min-height: 75vh;
-            }
-
-            .logo {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 2rem;
             }
 
             .main-heading {
@@ -324,25 +327,32 @@
             .info-content {
                 gap: 2rem;
             }
+
+            /* Updated top logo size for mobile */
+            .top-logo {
+                width: 100px;
+                height: 100px;
+                top: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Added since year in top right -->
-        <div class="since-year">Since 2004</div>
+        <!-- Moved logo to top of page -->
+        <div class="top-logo">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000151176-removebg-preview-xnUYcGFBQi7A6STWtA3cK3igcjwCpR.png" alt="Sindhri Restaurant Logo">
+        </div>
         
         <div class="content">
-            <!-- Using provided logo image -->
-            <div class="logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1000151176-removebg-preview-xnUYcGFBQi7A6STWtA3cK3igcjwCpR.png" alt="Sindhri Restaurant Logo">
-            </div>
-            
             <h1 class="main-heading">Coming Soon</h1>
             <p class="subtitle">Something big is coming. Be ready.</p>
             
-            <!-- Added slogan between subtitle and button -->
-            <p class="slogan">We Are Here for you</p>
+            <!-- Updated slogan to include since 2004 -->
+            <div class="slogan">
+                <span>We Are Here for you</span>
+                <span class="since-text">Since 2004</span>
+            </div>
             
             <!-- Updated WhatsApp link with correct number -->
             <a href="https://wa.me/923002986698" class="contact-button" target="_blank">
@@ -362,7 +372,7 @@
                         <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                         </svg>
-                        Main Shikarpur Road Sukkur
+                        New bus stand, Shikarpur road sukkur
                     </div>
                     
                     <div class="contact-item">
@@ -388,7 +398,7 @@
                         </a>
                         <a href="#" class="social-link">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.358-.2-6.78 2.618-6.98 6.98-.058 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.057 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.057-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.358-.2-6.78 2.618-6.98 6.98-.058 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.057 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
                         <a href="#" class="social-link">
